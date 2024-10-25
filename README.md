@@ -68,3 +68,30 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+// Sidebar.js
+import React, { useState } from 'react';
+import { useData } from './context/DataContext';
+
+const Sidebar = () => {
+    const { filterPhones } = useData();
+    const [criteria, setCriteria] = useState('');
+
+    const handleFilterChange = (e) => {
+        setCriteria(e.target.value);
+        filterPhones(e.target.value);
+    };
+
+    return (
+        <div className="sidebar">
+            <input
+                type="text"
+                value={criteria}
+                onChange={handleFilterChange}
+                placeholder="Filter by brand"
+            />
+        </div>
+    );
+};
+
+export default Sidebar;
