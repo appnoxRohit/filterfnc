@@ -19,7 +19,7 @@ const Body = () => {
 
               <li><strong>Price:</strong> {item.price}</li>
             
-            <li><strong>Col:</strong> {item.color}</li>
+            <li><strong>Color:</strong> {item.color}</li>
             <li><strong>Battery:</strong> {item.battery}</li>
             <li><strong>Screen Size:</strong> {item.screenSize}</li>
             <li><strong>RAM:</strong> {item.ram}</li>
