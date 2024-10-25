@@ -1,75 +1,96 @@
-import React, {  useState } from 'react';
+import React, { useState } from 'react';
 import { useData } from './Context';
 
 const Sidebar = () => {
   const { filterPhones } = useData();
-  const [criteriaBrand, setCriteriaBrand] = useState('');
-  const [storageFilter, setStorageFilter] = useState('');
-  const [criteriaColor, setCriteriaColor] = useState('');
- 
-  const handleFilterBrand = (e) => {
-    const brandValue = e.target.value;
-    setCriteriaBrand(brandValue);
-    filterPhones(brandValue, criteriaColor, storageFilter);
+  const [selectedBrands, setSelectedBrands] = useState([]);
+  const [selectedColors, setSelectedColors] = useState([]);
+  const [selectedStorage, setSelectedStorage] = useState([]);
 
-  };
-  
-  const handleFilterColor = (e) => {
-    const colorValue = e.target.value;
-    setCriteriaColor(colorValue);
-    filterPhones(criteriaBrand, colorValue, storageFilter);
-
+  const handleBrandChange = (e) => {
+    const value = e.target.value;
+    setSelectedBrands((prev) =>
+      prev.includes(value) ? prev.filter((brand) => brand !== value) : [...prev, value]
+    );
   };
 
-  const handleStorageFilter = (e) => {
-    const storageValue = e.target.value;
-    setStorageFilter(storageValue);
-    
-    filterPhones(criteriaBrand, criteriaColor, storageValue);
-
-    
-    
+  const handleColorChange = (e) => {
+    const value = e.target.value;
+    setSelectedColors((prev) =>
+      prev.includes(value) ? prev.filter((color) => color !== value) : [...prev, value]
+    );
   };
+
+  const handleStorageChange = (e) => {
+    const value = e.target.value;
+    setSelectedStorage((prev) =>
+      prev.includes(value) ? prev.filter((storage) => storage !== value) : [...prev, value]
+    );
+  };
+
+  const handleApplyFilters = () => {
+    filterPhones(selectedBrands, selectedColors, selectedStorage);
+  };
+
   const handleResetFilters = () => {
-    setCriteriaBrand('');
-    setCriteriaColor('');
-    setStorageFilter('');
-    filterPhones(); 
+    setSelectedBrands([]);
+    setSelectedColors([]);
+    setSelectedStorage([]);
+    filterPhones(); // Call without any criteria to reset
   };
-  
-  
 
   return (
-    <div className='h-auto flex flex-col w-[200px] '>
+    <div className="h-auto flex flex-col w-[200px] border-2 border-green-500">
       <h2>FILTERS</h2>
 
-      <button onClick={handleResetFilters}>Reset</button>
+      <h3>Brand:</h3>
+      {["Samsung", "Apple", "OnePlus", "Google"].map((brand) => (
+        <label key={brand}>
+          <input
+            type="checkbox"
+            value={brand}
+            checked={selectedBrands.includes(brand)}
+            onChange={handleBrandChange}
+          />
+          {brand}
+        </label>
+      ))}
 
-      <label htmlFor="brand">Brand:</label>
-      <select name="brand" id="brand" value={criteriaBrand} onChange={handleFilterBrand}>
-        <option value="" disabled>  select an option  </option>
-        <option value="Samsung">Samsung</option>
-        <option value="Apple">Apple</option>
-        <option value="OnePlus">OnePlus</option>
-        <option value="Google">Google</option>
-      </select>
+      <h3>Storage:</h3>
+      {["64GB", "128GB", "256GB"].map((storage) => (
+        <label key={storage}>
+          <input
+            type="checkbox"
+            value={storage}
+            checked={selectedStorage.includes(storage)}
+            onChange={handleStorageChange}
+          />
+          {storage}
+        </label>
+      ))}
 
-      <label htmlFor="storage">Storage:</label>
-      <select name="storage" id="storage" value={storageFilter} onChange={handleStorageFilter}>
-        <option value="" disabled className=''>  select an option  </option>
-        <option value="64GB">64GB</option>
-        <option value="128GB">128GB</option>
-        <option value="256GB">256GB</option>
-      </select>
+      <h3>Color:</h3>
+      {["Red", "Blue", "Green", "White"].map((color) => (
+        <label key={color}>
+          <input
+            type="checkbox"
+            value={color}
+            checked={selectedColors.includes(color)}
+            onChange={handleColorChange}
+          />
+          {color}
+        </label>
+      ))}
 
-      <label htmlFor="color">Color:</label>
-      <select name="color" id="color" value={criteriaColor} onChange={handleFilterColor}>
-        <option value="" disabled> select an option </option>
-        <option value="Red">Red</option>
-        <option value="Blue">Blue</option>
-        <option value="Green">Green</option>
-        <option value="White">White</option>
-      </select>
+      {/* Apply filters button */}
+      <button className="mt-4 px-2 py-1 bg-blue-500 text-white rounded" onClick={handleApplyFilters}>
+        Apply Filters
+      </button>
+
+      {/* Reset button */}
+      <button className="mt-2 px-2 py-1 bg-gray-300 rounded" onClick={handleResetFilters}>
+        Reset Filters
+      </button>
     </div>
   );
 };
