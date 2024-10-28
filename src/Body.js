@@ -1,9 +1,13 @@
 import React from 'react';
-import { useData } from './Context';
+import {  useSelector } from 'react-redux';
+// import { useData } from './Context';
+// import phones from './redux/Slice';
 
 const Body = () => {
 
-  const { data:phones } = useData();
+  // const { data:phones } = useData();
+  
+  const filteredPhones = useSelector((state)=>state.filters.filteredPhones);
 
   return (
     <div className='body flex  w-full '>
@@ -12,8 +16,9 @@ const Body = () => {
       
         p-4'>
         
-        {phones.map((item, index) => (
-          <ul key={index} className=' w-[230px] bg-cyan-200  mb-4  shadow-lg shadow-cyan-500/50  p-2 rounded-lg'>
+        {filteredPhones.map((item, index) => (
+          <ul key={index} className=' w-[230px]   mb-4  shadow-lg shadow-cyan-500/50  p-2 rounded-lg'>
+            <li ><img className='w-[214px] h-[214px]' src={item.url} alt='image of respective phone'/></li>
             <li><strong>Phone Name:</strong> {item.phoneName}</li>
             <li><strong>Brand:</strong> {item.brand}</li>
 

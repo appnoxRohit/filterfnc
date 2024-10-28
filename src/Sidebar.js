@@ -1,43 +1,49 @@
-import React, { useState } from 'react';
-import { useData } from './Context';
+
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { setBrands, setColors, setStorage, applyFilters, resetFilters } from './redux/Slice';
 
 const Sidebar = () => {
-  const { filterPhones } = useData();
-  const [selectedBrands, setSelectedBrands] = useState([]);
-  const [selectedColors, setSelectedColors] = useState([]);
-  const [selectedStorage, setSelectedStorage] = useState([]);
+    const dispatch = useDispatch();
+    const { selectedBrands, selectedColors, selectedStorage } = useSelector((state) => state.filters);
 
-  const handleBrandChange = (e) => {
-    const value = e.target.value;
-    setSelectedBrands((prev) =>
-      prev.includes(value) ? prev.filter((brand) => brand !== value) : [...prev, value]
-    );
-  };
+    const handleBrandChange = (e) => {
+        const value = e.target.value;
+        dispatch(
+            setBrands(selectedBrands.includes(value)
+                ? selectedBrands.filter((brand) => brand !== value)
+                : [...selectedBrands, value]
+            )
+        );
+    };
 
-  const handleColorChange = (e) => {
-    const value = e.target.value;
-    setSelectedColors((prev) =>
-      prev.includes(value) ? prev.filter((color) => color !== value) : [...prev, value]
-    );
-  };
+    const handleColorChange = (e) => {
+        const value = e.target.value;
+        dispatch(
+            setColors(selectedColors.includes(value)
+                ? selectedColors.filter((color) => color !== value)
+                : [...selectedColors, value]
+            )
+        );
+    };
 
-  const handleStorageChange = (e) => {
-    const value = e.target.value;
-    setSelectedStorage((prev) =>
-      prev.includes(value) ? prev.filter((storage) => storage !== value) : [...prev, value]
-    );
-  };
+    const handleStorageChange = (e) => {
+        const value = e.target.value;
+        dispatch(
+            setStorage(selectedStorage.includes(value)
+                ? selectedStorage.filter((storage) => storage !== value)
+                : [...selectedStorage, value]
+            )
+        );
+    };
 
-  const handleApplyFilters = () => {
-    filterPhones(selectedBrands, selectedColors, selectedStorage);
-  };
+    const handleApplyFilters = () => {
+        dispatch(applyFilters());
+    };
 
-  const handleResetFilters = () => {
-    setSelectedBrands([]);
-    setSelectedColors([]);
-    setSelectedStorage([]);
-    filterPhones(); // Call without any criteria to reset
-  };
+    const handleResetFilters = () => {
+        dispatch(resetFilters());
+    };
 
   return (
     <div className="h-auto pl-3 flex flex-col w-[200px] ">
