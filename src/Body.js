@@ -17,7 +17,7 @@ const Body = () => {
             <li><strong>Phone Name:</strong> {item.phoneName}</li>
             <li><strong>Brand:</strong> {item.brand}</li>
 
-              <li><strong>Price:</strong> {item.price}</li>
+            <li><strong>Price:</strong> {item.price}</li>
             
             <li><strong>Color:</strong> {item.color}</li>
             <li><strong>Battery:</strong> {item.battery}</li>

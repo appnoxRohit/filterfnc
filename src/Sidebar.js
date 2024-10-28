@@ -40,23 +40,32 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="h-auto flex flex-col w-[200px] border-2 border-green-500">
-      <h2>FILTERS</h2>
+    <div className="h-auto pl-3 flex flex-col w-[200px] ">
+      <h2 className='pl-12'><strong>FILTERS</strong></h2>
 
-      <h3>Brand:</h3>
+      < div className='mt-5'>
+      <h3 className='font-bold'>Brand:</h3>
       {["Samsung", "Apple", "OnePlus", "Google"].map((brand) => (
         <label key={brand}>
           <input
+          
             type="checkbox"
             value={brand}
             checked={selectedBrands.includes(brand)}
             onChange={handleBrandChange}
           />
           {brand}
+          <br/>
+
         </label>
       ))}
+      </div>
 
-      <h3>Storage:</h3>
+
+    
+
+     <div className='mt-3'>
+     <h3 className='font-bold'>Storage:</h3>
       {["64GB", "128GB", "256GB"].map((storage) => (
         <label key={storage}>
           <input
@@ -66,10 +75,14 @@ const Sidebar = () => {
             onChange={handleStorageChange}
           />
           {storage}
+          <br/>
+
         </label>
       ))}
+     </div>
 
-      <h3>Color:</h3>
+      <div className='mt-3 '>
+      <h3 className='font-bold'>Color:</h3>
       {["Red", "Blue", "Green", "White"].map((color) => (
         <label key={color}>
           <input
@@ -79,8 +92,10 @@ const Sidebar = () => {
             onChange={handleColorChange}
           />
           {color}
+          <br/>
         </label>
       ))}
+      </div>
 
       {/* Apply filters button */}
       <button className="mt-4 px-2 py-1 bg-blue-500 text-white rounded" onClick={handleApplyFilters}>
