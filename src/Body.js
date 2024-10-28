@@ -13,7 +13,7 @@ const Body = () => {
         p-4'>
         
         {phones.map((item, index) => (
-          <ul key={index} className=' w-[230px] bg-red-200  mb-4 border-2 border-red-500 p-2 rounded-lg'>
+          <ul key={index} className=' w-[230px] bg-cyan-200  mb-4  shadow-lg shadow-cyan-500/50  p-2 rounded-lg'>
             <li><strong>Phone Name:</strong> {item.phoneName}</li>
             <li><strong>Brand:</strong> {item.brand}</li>
 

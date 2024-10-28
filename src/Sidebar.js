@@ -98,7 +98,7 @@ const Sidebar = () => {
       </div>
 
       {/* Apply filters button */}
-      <button className="mt-4 px-2 py-1 bg-blue-500 text-white rounded" onClick={handleApplyFilters}>
+      <button className="mt-4 px-2 py-1 bg-cyan-300 text-white rounded" onClick={handleApplyFilters}>
         Apply Filters
       </button>
 
