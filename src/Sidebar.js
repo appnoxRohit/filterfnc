@@ -103,12 +103,10 @@ const Sidebar = () => {
       ))}
       </div>
 
-      {/* Apply filters button */}
-      <button className="mt-4 px-2 py-1 bg-cyan-300 text-white rounded" onClick={handleApplyFilters}>
+      <button className="mt-4 px-2 py-1 bg-cyan-600 text-white rounded" onClick={handleApplyFilters}>
         Apply Filters
       </button>
 
-      {/* Reset button */}
       <button className="mt-2 px-2 py-1 bg-gray-300 rounded" onClick={handleResetFilters}>
         Reset Filters
       </button>
