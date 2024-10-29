@@ -30,7 +30,6 @@ const Body = () => {
   const [open, setOpen] = React.useState(false);
 
   const [selectedPhone, setSelectedPhone] = React.useState(null);
-  const [favorite , setFavorites] = React.useState([]);
 
   const handleOpen = (phone) => {
     setSelectedPhone(phone);
@@ -53,19 +52,21 @@ const Body = () => {
       <div className="flex flex-wrap gap-9 p-4">
         {filteredPhones.map((item, index) => (
           
-          <ul key={index} className="w-[230px] mb-4 shadow-lg shadow-cyan-400/50 p-2 rounded-lg">
+          <ul key={index} className="w-[230px] mb-4 hover:shadow-lg shadow-cyan-400/50 p-2 rounded-lg">
              
     
              <li>
   {item.id === '5'  ? (<img   className=" bg-red-600  "     src={item.url} alt="phone" />
   ) : (<img className="object-contain h-52 w-52 scale-75" src={item.url}  alt="phone" />)}
 </li>            <li><strong>Phone Name:</strong> {item.phoneName}</li>
-            <li><strong>Price:</strong> {item.price}</li>
+            {/* <li><strong>Price:</strong> {item.price}</li> */}
+            <li><strong>Color:</strong>{item.color}</li>
+            
 
             <Card sx={{ maxWidth: 345 }}>
               <CardContent>
                 <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                  {item.phoneName} - {item.price}
+                  {item.phoneName} - {item.price} 
                 </Typography>
               </CardContent>
               <CardActions disableSpacing>
@@ -75,7 +76,7 @@ const Body = () => {
                 <IconButton aria-label="share">
                   <ShareIcon />
                 </IconButton>
-                <Button onClick={() => handleOpen(item)} variant="filled">More</Button>
+                <Button className='' onClick={() => handleOpen(item)} variant="contained">More</Button>
               </CardActions>
             </Card>
           </ul>

@@ -2,6 +2,8 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setBrands, setColors, setStorage, applyFilters, resetFilters } from './redux/Slice';
+import Button from '@mui/material/Button';
+
 
 const Sidebar = () => {
     const dispatch = useDispatch();
@@ -102,14 +104,17 @@ const Sidebar = () => {
         </label>
       ))}
       </div>
-
-      <button className="mt-4 px-2 py-1 bg-cyan-600 text-white rounded" onClick={handleApplyFilters}>
-        Apply Filters
-      </button>
-
-      <button className="mt-2 px-2 py-1 bg-gray-300 rounded" onClick={handleResetFilters}>
-        Reset Filters
-      </button>
+      
+      <div className='mt-5 ml-9'>
+      <Button variant='contained' className=" px-2 py-1 bg-cyan-600 text-white rounded" onClick={handleApplyFilters}>
+        Apply 
+      </Button>
+      </div>
+      <div className='mt-2 ml-9'>
+      <Button variant='outlined' className="mt-4 px-2 py-1 bg-gray-300 rounded" onClick={handleResetFilters}>
+        Reset 
+      </Button>
+      </div>
     </div>
   );
 };
