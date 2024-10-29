@@ -71,13 +71,19 @@ const Body = () => {
                 </Typography>
               </CardContent>
               <CardActions disableSpacing>
-                <IconButton aria-label="add to favorites">
+
+               <div className='flex '>
+               <IconButton aria-label="add to favorites">
                   <FavoriteIcon  />
                 </IconButton>
                 <IconButton aria-label="share">
                   <ShareIcon />
                 </IconButton>
-                <Button className='' onClick={() => handleOpen(item)} variant="contained">More</Button>
+                <div className='w-[120px] justify-end flex' >
+                <div className=''> <Button className='mt-4' onClick={() => handleOpen(item)} variant="contained">More</Button>
+                </div>
+                </div>
+               </div>
               </CardActions>
             </Card>
           </ul>
