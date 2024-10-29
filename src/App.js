@@ -4,13 +4,14 @@ import Header from './Header';
 import Body from './Body';
 import Sidebar from './Sidebar';
 
+
 function App() {
   return (
-    <div className="App">
+    <div className="app relative">
       <Header/>
       
     
-     <div className='flex'>
+     <div className='flex relative  '>
       <Sidebar className=' flex '/>
       <Body className=''/>
       </div>

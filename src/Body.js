@@ -11,6 +11,7 @@ import ShareIcon from '@mui/icons-material/Share';
 import Box from '@mui/material/Box';
 import { useSelector } from 'react-redux';
 
+
 const style = {
   position: 'absolute',
   top: '50%',
@@ -48,7 +49,7 @@ const Body = () => {
   // }
 
   return (
-    <div className="body flex w-full">
+    <div className="body pt-20    main-content flex w-full">
       <div className="flex flex-wrap gap-9 p-4">
         {filteredPhones.map((item, index) => (
           

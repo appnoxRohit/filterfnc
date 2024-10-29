@@ -3,6 +3,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setBrands, setColors, setStorage, applyFilters, resetFilters } from './redux/Slice';
 import Button from '@mui/material/Button';
+import './index.css'
 
 
 const Sidebar = () => {
@@ -48,7 +49,7 @@ const Sidebar = () => {
     };
 
   return (
-    <div className="h-auto pl-3 flex flex-col w-[200px] ">
+    <div className="sticky top-0 h-[100vh] pt-[100px] pl-3 flex flex-col w-[200px] ">
       <h2 className='pl-12'><strong>FILTERS</strong></h2>
 
       < div className='mt-5'>
